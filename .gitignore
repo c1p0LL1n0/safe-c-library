@@ -1,6 +1,13 @@
 *.o
 *.out
-safe_c_demo
 *.swp
 *~
 .DS_Store
+
+# compiled demos
+safe_c_demo
+safe_stdlib_demo
+demo_string
+safe_c_verify
+safe_stdlib_verify
+task.
