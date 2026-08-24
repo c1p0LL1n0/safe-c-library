@@ -1,0 +1,6 @@
+*.o
+*.out
+safe_c_demo
+*.swp
+*~
+.DS_Store
