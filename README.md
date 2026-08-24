@@ -184,5 +184,49 @@ gcc -Wall -Wextra -std=c99 safe_c_verify.c -o verify
 ```
 
 Только `#include "safe_c.c"` или `#include "safe_stdlib.c"` — без внешних зависимостей.
+## ⚠️ Дисклеймер
 
-`ft_str_isalpha_safe(s)` → 1/0 · `ft_str_isdigit_safe(s)` → 1/0
+> **Используйте с осторожностью.** Эта библиотека — учебный проект, написанный в рамках задания по безопасному программированию на C. Автор не даёт гарантий отсутствия багов, уязвимостей или undefined behavior. Перед использованием в production-окружении проведите собственный аудит кода.
+>
+> Библиотека прошла **99 програмных тестов** (64 — `safe_c`, 35 — `safe_stdlib`) и обрабатывает все известные краевые случаи, но абсолютная безопасность не может быть гарантирована ввиду сложности языка C и платформенных различий.
+
+## Лицензия (MIT)
+
+```
+MIT License
+
+Copyright (c) 2026 c1p0LL1n0
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+**Коротко:** делайте с кодом что хотите — используйте, модифицируйте, распространяйте. Указывайте авторство. Без гарантий.
+
+## Как внести вклад
+
+Pull request'ы приветствуются! Что можно улучшить:
+
+- 🐛 **Нашли баг?** — откройте issue, приложите минимальный пример
+- 🔧 **Новые функции** — обёртки для оставшихся опасных функций (`strtok`, `realpath`, `system`, …)
+- 🧪 **Тесты** — новые краевые случаи, fuzz-тестирование
+- 📦 **CMake / Makefile** — система сборки
+- 🌐 **Безопасная работа с сетью** — обёртки `socket`, `bind`, `connect`
+- 🧵 **Потокобезопасность** — `_r`-версии функций
+
+**Стиль кода:** никакого `malloc` в `safe_c.c`, обязательная проверка `NULL` и границ буфера, все возвращаемые значения осмысленны (нет `void`).
